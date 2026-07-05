@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lời Chúc Đặc Biệt ❤️</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Segoe UI',sans-serif;
+        }
+
+        body{
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            overflow:hidden;
+            background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#fad0c4,#fbc2eb);
+            background-size:400% 400%;
+            animation:bg 12s ease infinite;
+        }
+
+        @keyframes bg{
+            0%{background-position:0% 50%;}
+            50%{background-position:100% 50%;}
+            100%{background-position:0% 50%;}
+        }
+
+        .container{
+            width:800px;
+            max-width:90%;
+            background:rgba(255,255,255,.18);
+            backdrop-filter:blur(12px);
+            border-radius:20px;
+            padding:40px;
+            text-align:center;
+            color:white;
+            box-shadow:0 10px 40px rgba(0,0,0,.3);
+        }
+
+        h1{
+            margin-bottom:20px;
+            font-size:40px;
+        }
+
+        #text{
+            font-size:22px;
+            line-height:1.8;
+            white-space:pre-line;
+            min-height:350px;
+        }
+
+        button{
+            margin-top:25px;
+            padding:12px 35px;
+            border:none;
+            border-radius:30px;
+            background:white;
+            color:#ff4d6d;
+            font-size:18px;
+            cursor:pointer;
+            transition:.3s;
+        }
+
+        button:hover{
+            transform:scale(1.08);
+        }
+
+        .heart{
+            position:absolute;
+            color:#ff4d6d;
+            animation:float 6s linear infinite;
+        }
+
+        @keyframes float{
+            from{
+                transform:translateY(100vh) scale(.5);
+                opacity:1;
+            }
+            to{
+                transform:translateY(-120px) scale(1.8);
+                opacity:0;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🌷 Gửi Bạn 🌷</h1>
+
+    <div id="text"></div>
+
+    <button onclick="start()">
+        Xem Lời Chúc ❤️
+    </button>
+
+</div>
+
+<script>
+
+const message = `
+
+Vậy là chỉ còn một tuần nữa là bạn đã thực tập xong rồi.
+
+Mỗi người sẽ có một hướng đi riêng cho bản thân.
+
+Mình chúc bạn luôn tự hào, vui vẻ trên con đường mà bạn đã chọn.
+
+Dù con đường phía trước có khó khăn bao nhiêu thì mình mong bạn vẫn giữ vững đôi chân và tiếp tục bước tới thành công nhé.
+
+Chúc bạn thật nhiều may mắn, thật nhiều niềm vui và luôn gặp được những điều tốt đẹp trong cuộc sống.
+
+Cố lên nhé! 🌟
+
+`;
+
+let i = 0;
+
+function start(){
+
+    document.getElementById("text").innerHTML="";
+
+    i=0;
+
+    typing();
+
+}
+
+function typing(){
+
+    if(i<message.length){
+
+        document.getElementById("text").innerHTML += message.charAt(i);
+
+        i++;
+
+        setTimeout(typing,40);
+
+    }
+
+}
+
+function createHeart(){
+
+    const heart=document.createElement("div");
+
+    heart.className="heart";
+
+    heart.innerHTML="❤️";
+
+    heart.style.left=Math.random()*100+"vw";
+
+    heart.style.fontSize=(15+Math.random()*30)+"px";
+
+    heart.style.animationDuration=(3+Math.random()*4)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+
+        heart.remove();
+
+    },7000);
+
+}
+
+setInterval(createHeart,250);
+
+</script>
+
+</body>
+</html>
