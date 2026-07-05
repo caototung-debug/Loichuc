@@ -1,137 +1,130 @@
-
 <!DOCTYPE html>
 <html lang="vi">
-    <head>
-        <meta charset="UTF-8">
-        <title>Một điều đặc biệt dành cho bạn</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Một điều đặc biệt dành cho bạn 🎁</title>
 
-        <style>
-            *{
-                margin:0;
-                padding:0;
-                box-sizing:border-box;
-                font-family:'Segoe UI',sans-serif;
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Segoe UI',sans-serif;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            overflow:hidden;
+            background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
+            background-size:400% 400%;
+            animation:bg 10s ease infinite;
+        }
+
+        @keyframes bg{
+            0%{background-position:0% 50%;}
+            50%{background-position:100% 50%;}
+            100%{background-position:0% 50%;}
+        }
+
+        .box{
+            text-align:center;
+            color:white;
+            padding:30px;
+        }
+
+        .gift{
+            font-size:100px;
+            animation:bounce 1.5s infinite;
+        }
+
+        @keyframes bounce{
+            0%,100%{
+                transform:translateY(0);
+            }
+            50%{
+                transform:translateY(-20px);
+            }
+        }
+
+        h1{
+            margin:20px 0;
+            font-size:48px;
+        }
+
+        p{
+            font-size:24px;
+        }
+
+        #openBtn{
+            margin-top:30px;
+            padding:15px 40px;
+            border:none;
+            border-radius:50px;
+            font-size:20px;
+            cursor:pointer;
+            display:none;
+            background:white;
+            color:#ff4d6d;
+            transition:.3s;
+            box-shadow:0 5px 20px rgba(0,0,0,.2);
+        }
+
+        #openBtn:hover{
+            transform:scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <div class="gift">🎁</div>
+
+        <h1>Một điều đặc biệt dành cho bạn...</h1>
+
+        <p id="countdown">
+            Vui lòng chờ 5 giây ⏳
+        </p>
+
+        <button id="openBtn" onclick="openGift()">
+            💌 Mở món quà
+        </button>
+
+    </div>
+
+    <script>
+
+        let time = 5;
+
+        const countdown = document.getElementById("countdown");
+        const openBtn = document.getElementById("openBtn");
+
+        const timer = setInterval(() => {
+
+            time--;
+
+            if(time > 0){
+                countdown.innerText = "Vui lòng chờ " + time + " giây ⏳";
+            }else{
+
+                clearInterval(timer);
+
+                countdown.innerText = "Món quà đã sẵn sàng ❤️";
+                openBtn.style.display = "inline-block";
             }
 
-            body{
-                height:100vh;
-                display:flex;
-                justify-content:center;
-                align-items:center;
-                overflow:hidden;
-                background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
-                background-size:400% 400%;
-                animation:bg 10s ease infinite;
-            }
+        },1000);
 
-            @keyframes bg{
-                0%{
-                    background-position:0% 50%;
-                }
-                50%{
-                    background-position:100% 50%;
-                }
-                100%{
-                    background-position:0% 50%;
-                }
-            }
+        function openGift(){
+            window.location.href = "./loichuc.html";
+        }
 
-            .box{
-                text-align:center;
-                color:white;
-            }
+    </script>
 
-            .gift{
-                font-size:100px;
-                animation:bounce 1.5s infinite;
-            }
-
-            @keyframes bounce{
-                0%,100%{
-                    transform:translateY(0);
-                }
-                50%{
-                    transform:translateY(-20px);
-                }
-            }
-
-            h1{
-                margin:20px 0;
-                font-size:40px;
-            }
-
-            p{
-                font-size:22px;
-            }
-
-            #openBtn{
-                margin-top:30px;
-                padding:15px 40px;
-                border:none;
-                border-radius:50px;
-                font-size:20px;
-                cursor:pointer;
-                display:none;
-                background:white;
-                color:#ff4d6d;
-                transition:.3s;
-            }
-
-            #openBtn:hover{
-                transform:scale(1.1);
-            }
-        </style>
-    </head>
-
-    <body>
-
-        <div class="box">
-
-            <div class="gift">🎁</div>
-
-            <h1>Một điều đặc biệt dành cho bạn...</h1>
-
-            <p id="countdown">
-                Vui lòng chờ 5 giây ⏳
-            </p>
-
-            <button id="openBtn" onclick="openGift()">
-                💌 Mở món quà
-            </button>
-
-        </div>
-
-        <script>
-
-            let time = 5;
-
-            let timer = setInterval(function () {
-
-                time--;
-
-                document.getElementById("countdown").innerHTML =
-                        "Vui lòng chờ " + time + " giây ⏳";
-
-                if (time <= 0) {
-
-                    clearInterval(timer);
-
-                    document.getElementById("countdown").innerHTML =
-                            "Món quà đã sẵn sàng ❤️";
-
-                    document.getElementById("openBtn").style.display = "inline-block";
-                }
-
-            }, 1000);
-
-
-            function openGift() {
-
-                window.location.href = "loichuc.html";
-
-            }
-
-        </script>
-
-    </body>
+</body>
 </html>
