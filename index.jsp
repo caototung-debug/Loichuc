@@ -1,0 +1,144 @@
+<%-- 
+    Document   : index
+    Created on : Jul 5, 2026, 3:26:02 PM
+    Author     : HP
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <title>Một điều đặc biệt dành cho bạn</title>
+
+        <style>
+            *{
+                margin:0;
+                padding:0;
+                box-sizing:border-box;
+                font-family:'Segoe UI',sans-serif;
+            }
+
+            body{
+                height:100vh;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                overflow:hidden;
+                background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
+                background-size:400% 400%;
+                animation:bg 10s ease infinite;
+            }
+
+            @keyframes bg{
+                0%{
+                    background-position:0% 50%;
+                }
+                50%{
+                    background-position:100% 50%;
+                }
+                100%{
+                    background-position:0% 50%;
+                }
+            }
+
+            .box{
+                text-align:center;
+                color:white;
+            }
+
+            .gift{
+                font-size:100px;
+                animation:bounce 1.5s infinite;
+            }
+
+            @keyframes bounce{
+                0%,100%{
+                    transform:translateY(0);
+                }
+                50%{
+                    transform:translateY(-20px);
+                }
+            }
+
+            h1{
+                margin:20px 0;
+                font-size:40px;
+            }
+
+            p{
+                font-size:22px;
+            }
+
+            #openBtn{
+                margin-top:30px;
+                padding:15px 40px;
+                border:none;
+                border-radius:50px;
+                font-size:20px;
+                cursor:pointer;
+                display:none;
+                background:white;
+                color:#ff4d6d;
+                transition:.3s;
+            }
+
+            #openBtn:hover{
+                transform:scale(1.1);
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="box">
+
+            <div class="gift">🎁</div>
+
+            <h1>Một điều đặc biệt dành cho bạn...</h1>
+
+            <p id="countdown">
+                Vui lòng chờ 5 giây ⏳
+            </p>
+
+            <button id="openBtn" onclick="openGift()">
+                💌 Mở món quà
+            </button>
+
+        </div>
+
+        <script>
+
+            let time = 5;
+
+            let timer = setInterval(function () {
+
+                time--;
+
+                document.getElementById("countdown").innerHTML =
+                        "Vui lòng chờ " + time + " giây ⏳";
+
+                if (time <= 0) {
+
+                    clearInterval(timer);
+
+                    document.getElementById("countdown").innerHTML =
+                            "Món quà đã sẵn sàng ❤️";
+
+                    document.getElementById("openBtn").style.display = "inline-block";
+                }
+
+            }, 1000);
+
+
+            function openGift() {
+
+                window.location.href = "loichuc";
+
+            }
+
+        </script>
+
+    </body>
+</html>

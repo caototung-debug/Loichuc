@@ -1,0 +1,147 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>🌷 Lời Chúc Đặc Biệt 🌷</title>
+
+        <style>
+            *{
+                margin:0;
+                padding:0;
+                box-sizing:border-box;
+                font-family:'Segoe UI',sans-serif;
+            }
+
+            body{
+                min-height:100vh;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                overflow:hidden;
+                background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
+                background-size:400% 400%;
+                animation:bg 12s ease infinite;
+            }
+
+            @keyframes bg{
+                0%{
+                    background-position:0% 50%;
+                }
+                50%{
+                    background-position:100% 50%;
+                }
+                100%{
+                    background-position:0% 50%;
+                }
+            }
+
+            .container{
+                width:750px;
+                max-width:90%;
+                background:rgba(255,255,255,0.2);
+                backdrop-filter:blur(15px);
+                border-radius:25px;
+                padding:40px;
+                text-align:center;
+                color:white;
+                box-shadow:0 10px 40px rgba(0,0,0,.3);
+            }
+
+            h1{
+                margin-bottom:25px;
+                font-size:38px;
+            }
+
+            #text{
+                font-size:22px;
+                line-height:1.8;
+                white-space:pre-line;
+                text-align:left;
+            }
+
+            .heart{
+                position:absolute;
+                color:#ff4d6d;
+                animation:float 6s linear infinite;
+                pointer-events:none;
+            }
+
+            @keyframes float{
+                from{
+                    transform:translateY(100vh) scale(.5);
+                    opacity:1;
+                }
+                to{
+                    transform:translateY(-100px) scale(1.8);
+                    opacity:0;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="container">
+            <h1>🌷 Gửi Bạn 🌷</h1>
+            <div id="text"></div>
+        </div>
+
+        <script>
+
+            const message = `
+        Vậy là chỉ còn 1 tuần nữa là bạn đã thực tập xong rồi.
+
+        Mỗi người rồi cũng sẽ có cho mình một hướng đi riêng và những lựa chọn khác nhau trong cuộc sống.
+
+        Mình chúc bạn luôn tự hào, vui vẻ và vững tin trên con đường mà bạn đã chọn.
+
+        Dù phía trước có khó khăn hay thử thách đến đâu, mình mong bạn vẫn luôn giữ vững đôi chân, kiên trì bước tiếp và không ngừng cố gắng để chạm đến những thành công mà mình mong muốn.
+
+        Chúc cho hành trình sắp tới của bạn sẽ thật nhiều niềm vui, nhiều cơ hội tốt đẹp và gặp được những người đồng hành tuyệt vời.
+
+        Hãy luôn tin vào bản thân, bởi bạn xứng đáng với những điều tốt đẹp nhất.
+
+        Cố lên nhé! Tương lai phía trước vẫn đang chờ đón bạn, và mình tin rằng bạn sẽ làm được thật nhiều điều tuyệt vời. 🌟
+        `;
+
+            let i = 0;
+
+            function typing() {
+                if (i < message.length) {
+                    document.getElementById("text").innerHTML += message.charAt(i);
+                    i++;
+                    setTimeout(typing, 40);
+                }
+            }
+
+            window.onload = function () {
+                typing();
+            };
+
+        // Hiệu ứng trái tim
+            function createHeart() {
+                const heart = document.createElement("div");
+
+                heart.className = "heart";
+                heart.innerHTML = "💖";
+
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.fontSize = (15 + Math.random() * 25) + "px";
+                heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 7000);
+            }
+
+            setInterval(createHeart, 300);
+
+        </script>
+
+    </body>
+</html>
